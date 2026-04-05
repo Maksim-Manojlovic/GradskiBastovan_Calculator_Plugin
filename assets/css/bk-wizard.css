@@ -1,0 +1,259 @@
+/* ================================================================
+   BK DESIGN SYSTEM — Wizard
+   Progress bar, koraci, animacije, navigacija, review kartica
+   ================================================================ */
+
+/* ────────────────────────────────────────────────────────────────
+   PROGRESS BAR
+   ──────────────────────────────────────────────────────────────── */
+.bk-progress {
+  max-width: 660px;
+  margin: 0 auto var(--bk-space-7);
+  padding: 50px;
+}
+
+.bk-progress-track {
+  position: relative;
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 2px;
+  margin-bottom: var(--bk-space-4);
+}
+
+.bk-progress-fill {
+  height: 100%;
+  background: var(--bk-primary);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bk-progress-steps {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.bk-progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.bk-step-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--bk-radius-circle);
+  background: #e5e7eb;
+  color: #9ca3af;
+  font-size: var(--bk-text-sm);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.3s,
+    color 0.3s,
+    transform 0.3s;
+  border: 2px solid transparent;
+}
+
+.bk-step-label {
+  font-size: 12px;
+  color: #9ca3af;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+/* Aktivni korak */
+.bk-progress-step.active .bk-step-dot {
+  background: var(--bk-primary);
+  color: var(--bk-white);
+  transform: scale(1.12);
+  border-color: var(--bk-primary);
+}
+
+.bk-progress-step.active .bk-step-label {
+  color: var(--bk-primary);
+  font-weight: 700;
+}
+
+/* Završeni korak */
+.bk-progress-step.completed .bk-step-dot {
+  background: var(--bk-primary);
+  color: var(--bk-white);
+  font-size: 0; /* Sakrij broj, prikaži checkmark */
+}
+
+.bk-progress-step.completed .bk-step-dot::after {
+  content: "✓";
+  font-size: 14px;
+}
+
+.bk-progress-step.completed .bk-step-label {
+  color: var(--bk-primary);
+}
+
+/* ────────────────────────────────────────────────────────────────
+   STEP ANIMACIJE (slide)
+   ──────────────────────────────────────────────────────────────── */
+.bk-steps-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.bk-step {
+  width: 100%;
+}
+
+@keyframes bk-slide-out-left {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+}
+
+@keyframes bk-slide-out-right {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+}
+
+@keyframes bk-slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bk-slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.bk-slide-out-left {
+  animation: bk-slide-out-left 0.28s ease forwards;
+}
+.bk-slide-out-right {
+  animation: bk-slide-out-right 0.28s ease forwards;
+}
+.bk-slide-in-right {
+  animation: bk-slide-in-right 0.28s ease forwards;
+}
+.bk-slide-in-left {
+  animation: bk-slide-in-left 0.28s ease forwards;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   STEP NAVIGACIJA (Nazad / Dalje)
+   ──────────────────────────────────────────────────────────────── */
+.bk-step-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--bk-space-5);
+  gap: var(--bk-space-3);
+}
+
+/* ────────────────────────────────────────────────────────────────
+   REVIEW KARTICA (Korak 3 — pregled pre slanja)
+   ──────────────────────────────────────────────────────────────── */
+.bk-review-card {
+  background: var(--bk-cream);
+  border: 1.5px solid var(--bk-primary-border);
+  border-radius: var(--bk-radius-lg);
+  padding: var(--bk-space-5) var(--bk-space-6);
+  margin-bottom: var(--bk-space-6);
+}
+
+.bk-review-title {
+  font-size: var(--bk-text-base);
+  font-weight: 700;
+  color: var(--bk-primary);
+  margin-bottom: 14px;
+  letter-spacing: 0.3px;
+}
+
+.bk-review-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px var(--bk-space-6);
+}
+
+.bk-review-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bk-review-label {
+  font-size: var(--bk-text-xs);
+  font-weight: 700;
+  color: var(--bk-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bk-review-value {
+  font-size: var(--bk-text-base);
+  color: var(--bk-text);
+  font-weight: 500;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ──────────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .bk-review-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================================================================
+   REVIEW GRID — nove klase (bk-review-row / bk-review-bold)
+   ================================================================ */
+
+/* Override: review-row je flex kolona (dodato pored postojećeg .bk-review-item) */
+.bk-review-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bk-review-bold {
+  font-weight: 800;
+  color: var(--bk-primary);
+  font-size: var(--bk-text-md);
+}
+
+/* ================================================================
+   ERROR DIV — sakriven dok je prazan
+   ================================================================ */
+.bk-error:empty {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+}

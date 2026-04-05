@@ -1,0 +1,327 @@
+/* ================================================================
+   BK DESIGN SYSTEM — Rezultati & Email
+   Result prikaz, breakdown, email forma
+   ================================================================ */
+
+/* ────────────────────────────────────────────────────────────────
+   REZULTATI
+   ──────────────────────────────────────────────────────────────── */
+.bk-result {
+    display: none; /* JS pokazuje nakon submit-a */
+    background: var(--bk-primary);
+    background-image:
+        radial-gradient(ellipse at 10% 90%, rgba(206, 224, 125, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 10%, rgba(206, 224, 125, 0.08) 0%, transparent 50%);
+    border-radius: var(--bk-radius-2xl);
+    padding: var(--bk-space-8);
+    color: white;
+    margin-bottom: var(--bk-space-5);
+}
+
+.bk-result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--bk-space-6);
+    gap: var(--bk-space-4);
+}
+
+.bk-result-label {
+    font-size: var(--bk-text-xs);
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin-bottom: var(--bk-space-2);
+}
+
+.bk-result-price-value {
+    font-family: var(--bk-font-display);
+    font-size: clamp(40px, 8vw, 64px);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--bk-secondary);
+}
+
+.bk-result-price-label {
+    font-size: var(--bk-text-sm);
+    opacity: 0.7;
+    margin-top: 6px;
+}
+
+/* Breakdown lista */
+.bk-breakdown {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: var(--bk-radius-lg);
+    padding: var(--bk-space-5);
+    margin-bottom: var(--bk-space-6);
+}
+
+.bk-breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--bk-text-sm);
+    padding: 6px 0;
+    opacity: 0.85;
+}
+
+.bk-breakdown-total {
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+    margin-top: var(--bk-space-1);
+    padding-top: 10px;
+    font-weight: 600;
+}
+
+/* Tagovi */
+.bk-result-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--bk-space-2);
+    margin-bottom: var(--bk-space-6);
+}
+
+.bk-tag {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--bk-radius-full);
+    padding: 5px 12px;
+    font-size: 12px;
+    opacity: 0.85;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   EMAIL SEKCIJA
+   ──────────────────────────────────────────────────────────────── */
+.bk-email-section {
+    background: var(--bk-cream);
+    border: 1px solid var(--bk-primary-border);
+    border-radius: var(--bk-radius-xl);
+    padding: var(--bk-space-5) var(--bk-space-6);
+    margin-bottom: var(--bk-space-4);
+}
+
+.bk-email-info {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--bk-space-3);
+    margin-bottom: var(--bk-space-4);
+    font-size: var(--bk-text-base);
+    color: #555;
+    line-height: 1.5;
+}
+
+.bk-email-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.bk-email-info strong {
+    color: var(--bk-primary);
+}
+
+.bk-email-wrap { position: relative; }
+
+.bk-email-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 48px 13px var(--bk-space-4);
+    font-size: var(--bk-text-md);
+    border: 2px solid var(--bk-border);
+    border-radius: var(--bk-radius-md);
+    outline: none;
+    background: var(--bk-white);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    color: var(--bk-text);
+}
+
+.bk-email-input:focus {
+    border-color: var(--bk-primary-hover);
+    box-shadow: 0 0 0 3px var(--bk-primary-light);
+}
+
+.bk-email-input.valid {
+    border-color: var(--bk-success);
+    background: var(--bk-success-bg);
+    box-shadow: 0 0 0 3px rgba(45, 158, 45, 0.1);
+}
+
+.bk-email-input.invalid {
+    border-color: var(--bk-error);
+    box-shadow: 0 0 0 3px rgba(217, 64, 64, 0.1);
+}
+
+.bk-email-check {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--bk-success);
+    font-size: 18px;
+    font-weight: 700;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+}
+
+.bk-email-check.visible { opacity: 1; }
+
+/* Status slanja */
+.bk-send-status {
+    display: none;
+    padding: var(--bk-space-3) var(--bk-space-4);
+    border-radius: var(--bk-radius-md);
+    font-size: var(--bk-text-base);
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+.bk-send-status.sending {
+    display: block;
+    background: var(--bk-info-bg);
+    color: var(--bk-info);
+    border: 1px solid var(--bk-info-border);
+}
+
+.bk-send-status.success {
+    display: block;
+    background: var(--bk-success-bg);
+    color: var(--bk-success);
+    border: 1px solid var(--bk-success-border);
+}
+
+.bk-send-status.error {
+    display: block;
+    background: var(--bk-error-bg);
+    color: var(--bk-error);
+    border: 1px solid var(--bk-error-border);
+}
+
+/* ────────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ──────────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+    .bk-result-header {
+        flex-direction: column;
+    }
+
+    .bk-result-price-value {
+        font-size: 36px;
+        text-align: left;
+    }
+
+    .bk-result-price-label {
+        text-align: left;
+    }
+}
+
+/* ================================================================
+   LIVE CENA PREVIEW (korak 1 — ispod unosa količine)
+   ================================================================ */
+.bk-live-cena {
+  margin-top: var(--bk-space-4);
+  padding-top: var(--bk-space-4);
+  border-top: 1px dashed var(--bk-primary-border);
+}
+
+.bk-live-cena-label {
+  font-size: var(--bk-text-xs);
+  font-weight: 700;
+  color: var(--bk-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 3px;
+}
+
+.bk-live-cena-value {
+  font-size: var(--bk-text-xl);
+  font-weight: 800;
+  color: var(--bk-primary);
+}
+
+.bk-live-cena-tip {
+  font-size: var(--bk-text-xs);
+  color: var(--bk-text-muted);
+  margin-top: 2px;
+}
+
+/* ================================================================
+   BREAKDOWN CENE — unutar .bk-result (tamna kartica)
+   ================================================================ */
+.bk-breakdown-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 4px 12px;
+  align-items: baseline;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: var(--bk-text-sm);
+}
+
+.bk-breakdown-item:last-child {
+  border-bottom: none;
+}
+
+.bk-breakdown-item .name {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.bk-breakdown-item .meta {
+  color: rgba(255, 255, 255, 0.50);
+  font-size: var(--bk-text-xs);
+  white-space: nowrap;
+}
+
+.bk-breakdown-item .price {
+  color: var(--bk-secondary);
+  font-weight: 700;
+  white-space: nowrap;
+  text-align: right;
+}
+
+/* Minimalna cena red */
+.bk-bd-min {
+  background: rgba(245, 158, 11, 0.12);
+  border-left: 3px solid #f59e0b;
+  padding-left: var(--bk-space-3);
+  border-radius: 0 var(--bk-radius-sm) var(--bk-radius-sm) 0;
+  margin-top: 2px;
+}
+
+.bk-bd-min .name,
+.bk-bd-min .price {
+  color: #fcd34d;
+}
+
+/* Rezultat — manji font za raspon cene (duži tekst) */
+.bk-result-price-value.raspon {
+  font-size: clamp(22px, 4vw, 36px);
+}
+
+/* Tagovi u result kartici */
+.bk-result-tag {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--bk-radius-full);
+  padding: 5px 12px;
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+/* ================================================================
+   RESULT HEADER — naslovi i subtitle
+   ================================================================ */
+.bk-result-title {
+  font-size: var(--bk-text-sm);
+  font-weight: 600;
+  opacity: 0.65;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 4px;
+}
+
+.bk-result-subtitle {
+  font-size: var(--bk-text-base);
+  opacity: 0.75;
+  margin-top: 2px;
+}

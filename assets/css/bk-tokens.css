@@ -1,0 +1,96 @@
+/* ================================================================
+   BK DESIGN SYSTEM — Tokens
+   Boje, tipografija, razmaci, senke
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+    /* ── Primarne boje ─────────────────────────────────────────── */
+    --bk-primary:          #0C4734;   /* Tamno zelena */
+    --bk-primary-hover:    #0e5840;   /* Malo svetlija za hover */
+    --bk-primary-light:    rgba(12, 71, 52, 0.08);
+    --bk-primary-subtle:   rgba(12, 71, 52, 0.05);
+    --bk-primary-border:   rgba(12, 71, 52, 0.15);
+
+    --bk-secondary:        #CEE07D;   /* Neon žuto-zelena */
+    --bk-secondary-muted:  rgba(206, 224, 125, 0.25);
+    --bk-secondary-light:  rgba(206, 224, 125, 0.12);
+
+    --bk-cream:            #FFFAF3;   /* Topla bela / podloga */
+
+    /* ── Neutralne boje ────────────────────────────────────────── */
+    --bk-white:            #ffffff;
+    --bk-text:             #1a1a1a;
+    --bk-text-muted:       #6b7280;
+    --bk-border:           #e8e8e8;
+    --bk-border-light:     #f0f0f0;
+    --bk-surface:          #fafafa;
+    --bk-surface-alt:      #f8f9fa;
+
+    /* ── Semantičke boje ───────────────────────────────────────── */
+    --bk-success:          #2d9e2d;
+    --bk-success-bg:       #f0fbf0;
+    --bk-success-border:   #a8d8a8;
+
+    --bk-error:            #dc2626;
+    --bk-error-bg:         #fef2f2;
+    --bk-error-border:     #fecaca;
+
+    --bk-info:             #3355aa;
+    --bk-info-bg:          #f0f4ff;
+    --bk-info-border:      #ccd6ff;
+
+    /* ── Tipografija ───────────────────────────────────────────── */
+    --bk-font-body:        'DM Sans', sans-serif;
+    --bk-font-display:     'Playfair Display', serif;
+
+    --bk-text-xs:          11px;
+    --bk-text-sm:          13px;
+    --bk-text-base:        14px;
+    --bk-text-md:          15px;
+    --bk-text-lg:          18px;
+    --bk-text-xl:          24px;
+    --bk-text-2xl:         clamp(28px, 5vw, 48px);
+
+    /* ── Razmaci ───────────────────────────────────────────────── */
+    --bk-space-1:          4px;
+    --bk-space-2:          8px;
+    --bk-space-3:          12px;
+    --bk-space-4:          16px;
+    --bk-space-5:          20px;
+    --bk-space-6:          24px;
+    --bk-space-7:          28px;
+    --bk-space-8:          32px;
+    --bk-space-10:         40px;
+    --bk-space-12:         48px;
+    --bk-space-14:         56px;
+    --bk-space-15:         60px;
+
+    /* ── Border radius ─────────────────────────────────────────── */
+    --bk-radius-sm:        8px;
+    --bk-radius-md:        10px;
+    --bk-radius-lg:        12px;
+    --bk-radius-xl:        14px;
+    --bk-radius-2xl:       16px;
+    --bk-radius-full:      100px;
+    --bk-radius-circle:    50%;
+
+    /* ── Senke ─────────────────────────────────────────────────── */
+    --bk-shadow:           0 4px 24px rgba(12, 71, 52, 0.10);
+    --bk-shadow-strong:    0 8px 40px rgba(12, 71, 52, 0.20);
+    --bk-shadow-btn:       0 6px 20px rgba(12, 71, 52, 0.28);
+    --bk-shadow-range:     0 2px 8px  rgba(12, 71, 52, 0.22);
+
+    /* ── Tranzicije ────────────────────────────────────────────── */
+    --bk-transition:       all 0.2s ease;
+    --bk-transition-slow:  all 0.3s ease;
+}
+
+/* ── Base reset za wrapper ─────────────────────────────────────── */
+.bk-wrapper {
+    font-family: var(--bk-font-body);
+    background: var(--bk-cream);
+    margin: 0;
+    padding: 0;
+}

@@ -1,0 +1,145 @@
+/* ================================================================
+   BK DESIGN SYSTEM — Layout
+   Hero, main wrapper, sekcije, divajderi
+   ================================================================ */
+
+/* ── Hero ──────────────────────────────────────────────────────── */
+.bk-hero {
+    background: var(--bk-primary);
+    background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(206, 224, 125, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(12, 71, 52, 0.35) 0%, transparent 50%);
+    padding: var(--bk-space-14) var(--bk-space-8) var(--bk-space-12);
+    text-align: center;
+}
+
+.bk-hero-label {
+    font-size: var(--bk-text-xs);
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--bk-secondary);
+    margin-bottom: var(--bk-space-3);
+}
+
+.bk-hero h1 {
+    font-family: var(--bk-font-display);
+    font-size: var(--bk-text-2xl);
+    color: var(--bk-white);
+    margin: 0 0 var(--bk-space-3);
+    line-height: 1.15;
+}
+
+.bk-hero p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: var(--bk-text-md);
+    font-weight: 300;
+    margin: 0;
+}
+
+/* ── Main sadržaj ──────────────────────────────────────────────── */
+.bk-main {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: var(--bk-space-10) var(--bk-space-5) var(--bk-space-15);
+}
+
+/* ── Kartica / sekcija ─────────────────────────────────────────── */
+.bk-section {
+    background: var(--bk-white);
+    border-radius: var(--bk-radius-2xl);
+    padding: var(--bk-space-7) var(--bk-space-7) var(--bk-space-6);
+    margin-bottom: var(--bk-space-5);
+    box-shadow: var(--bk-shadow);
+    border: 1px solid var(--bk-primary-border);
+}
+
+.bk-section-title {
+    font-family: var(--bk-font-display);
+    font-size: var(--bk-text-lg);
+    color: var(--bk-primary);
+    margin: 0 0 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bk-section-desc {
+    font-size: var(--bk-text-sm);
+    color: var(--bk-text-muted);
+    margin: 0 0 var(--bk-space-5);
+    font-weight: 300;
+}
+
+/* ── Divajder ──────────────────────────────────────────────────── */
+.bk-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #e0d8cc, transparent);
+    margin: var(--bk-space-6) 0;
+}
+
+/* ── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+    .bk-hero {
+        padding: var(--bk-space-10) var(--bk-space-5) 36px;
+    }
+
+    .bk-main {
+        padding: var(--bk-space-6) var(--bk-space-3) var(--bk-space-12);
+    }
+
+    .bk-section {
+        padding: var(--bk-space-5) var(--bk-space-4);
+    }
+}
+
+/* ================================================================
+   KOLIČINA BOX — unos m²/komada u koraku 1
+   ================================================================ */
+.bk-kolicina-box {
+  background: var(--bk-primary-subtle);
+  border: 1px solid var(--bk-primary-border);
+  border-radius: var(--bk-radius-xl);
+  padding: var(--bk-space-5) var(--bk-space-6);
+}
+
+.bk-kolicina-title {
+  font-size: var(--bk-text-base);
+  font-weight: 700;
+  color: var(--bk-primary);
+  margin-bottom: 4px;
+}
+
+.bk-kolicina-napomena {
+  font-size: var(--bk-text-xs);
+  color: var(--bk-text-muted);
+  margin-bottom: 12px;
+  min-height: 16px;
+}
+
+.bk-kolicina-row {
+  display: flex;
+  align-items: center;
+  gap: var(--bk-space-3);
+  flex-wrap: nowrap;
+}
+
+.bk-kolicina-row .bk-input {
+  width: 140px;
+  min-width: 80px;
+  font-size: var(--bk-text-xl);
+  font-weight: 700;
+  padding: 8px 12px;
+  border: 2px solid var(--bk-primary);
+  border-radius: var(--bk-radius-md);
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.bk-kolicina-row .bk-input-suffix {
+  font-size: var(--bk-text-lg);
+  font-weight: 700;
+  color: var(--bk-primary);
+  flex-shrink: 0;
+  pointer-events: none;
+}
