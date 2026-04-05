@@ -21,15 +21,16 @@ function bk_enqueue_styles() {
         echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
     }, 1 );
 
-    // Google Fonts — enqueued directly so it fires in parallel with kalkulator.css
+    // Google Fonts — deferred, non-blocking
     wp_enqueue_style(
         'bk-google-fonts',
         'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap',
         [],
-        null
+        null,
+        'print'
     );
 
-    // Defer — calculator is not above the fold
+    // Defer kalkulator.css — calculator is not above the fold
     wp_enqueue_style(
         'bk-kalkulator-style',
         BK_URL . 'assets/css/kalkulator.css',
@@ -38,8 +39,9 @@ function bk_enqueue_styles() {
         'print'
     );
 
-    add_filter( 'style_loader_tag', function( $tag, $handle ) {
-        if ( $handle !== 'bk-kalkulator-style' ) return $tag;
+    $deferred = [ 'bk-google-fonts', 'bk-kalkulator-style' ];
+    add_filter( 'style_loader_tag', function( $tag, $handle ) use ( $deferred ) {
+        if ( ! in_array( $handle, $deferred, true ) ) return $tag;
         $tag = str_replace( "media='print'", "media='print' onload=\"this.media='all'\"", $tag );
         return $tag . "<noscript>" . str_replace( " onload=\"this.media='all'\"", '', $tag ) . "</noscript>\n";
     }, 10, 2 );
