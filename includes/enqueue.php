@@ -15,6 +15,20 @@ function bk_enqueue_styles() {
         return;
     }
 
+    // Preconnect to Google Fonts origins to eliminate DNS/TLS overhead
+    add_action( 'wp_head', function() {
+        echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
+        echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+    }, 1 );
+
+    // Google Fonts — enqueued directly so it fires in parallel with kalkulator.css
+    wp_enqueue_style(
+        'bk-google-fonts',
+        'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap',
+        [],
+        null
+    );
+
     // Defer — calculator is not above the fold
     wp_enqueue_style(
         'bk-kalkulator-style',
