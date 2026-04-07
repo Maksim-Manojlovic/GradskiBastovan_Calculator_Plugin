@@ -37,8 +37,8 @@
     --bk-info-bg:          #f0f4ff;
     --bk-info-border:      #ccd6ff;
 
-    --bk-font-body:        'DM Sans', sans-serif;
-    --bk-font-display:     'Playfair Display', serif;
+    --bk-font-body:        sans-serif;
+    --bk-font-display:     serif;
 
     --bk-text-xs:          11px;
     --bk-text-sm:          13px;
