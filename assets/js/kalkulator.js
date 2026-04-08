@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // ── Katalog usluga (injektovan iz PHP-a) ──────────────────
   var BK_USLUGE = window.bkUsluge || [];
   var BK_MIN_CENA = 4000;
-  //proba
+
   // ── State ─────────────────────────────────────────────────
   var currentStep = 1;
   var totalSteps = 3;
@@ -58,29 +58,34 @@ document.addEventListener("DOMContentLoaded", function () {
       direction === "forward" ? "bk-slide-in-right" : "bk-slide-in-left";
 
     current.classList.add(outClass);
-    current.addEventListener(
-      "animationend",
-      function handler() {
-        current.removeEventListener("animationend", handler);
-        current.style.display = "none";
-        current.classList.remove(outClass);
 
-        target.style.display = "block";
-        target.classList.add(inClass);
-        target.addEventListener("animationend", function h2() {
-          target.removeEventListener("animationend", h2);
-          target.classList.remove(inClass);
-        });
+    var outDone = false;
+    function afterOut() {
+      if (outDone) return;
+      outDone = true;
+      current.style.display = "none";
+      current.classList.remove(outClass);
 
-        currentStep = next;
-        updateProgress(next);
+      target.style.display = "block";
+      target.classList.add(inClass);
 
-        if (next === 3) buildReview();
+      var inDone = false;
+      function afterIn() {
+        if (inDone) return;
+        inDone = true;
+        target.classList.remove(inClass);
+      }
+      target.addEventListener("animationend", afterIn, { once: true });
+      setTimeout(afterIn, 350);
 
-        wrapper.scrollIntoView({ behavior: "smooth", block: "start" });
-      },
-      { once: true },
-    );
+      currentStep = next;
+      updateProgress(next);
+      if (next === 3) buildReview();
+      wrapper.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    current.addEventListener("animationend", afterOut, { once: true });
+    setTimeout(afterOut, 350);
   }
 
   // ── Korak 1: Primarne usluge ──────────────────────────────
