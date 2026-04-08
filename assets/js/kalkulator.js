@@ -322,6 +322,13 @@ document.addEventListener("DOMContentLoaded", function () {
     renderCart();
     updateNext1();
     showToast("&#10003; Dodato: " + escHtml(label));
+
+    var cartEl = document.getElementById("bk-cart");
+    if (cartEl) {
+      setTimeout(function () {
+        cartEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }, 80);
+    }
   });
 
   function showToast(msg) {
