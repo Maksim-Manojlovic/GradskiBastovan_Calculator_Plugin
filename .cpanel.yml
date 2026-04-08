@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/gradskib/public_html/wp-content/plugins/bk-v9
+    - /bin/cp -R $SRCDIR/. $DEPLOYPATH/
