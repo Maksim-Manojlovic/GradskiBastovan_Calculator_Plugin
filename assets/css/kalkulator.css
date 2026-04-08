@@ -616,6 +616,42 @@
     color: var(--bk-white);
 }
 
+/* ── TOAST ───────────────────────────────────────────────────────── */
+.bk-toast {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    background: var(--bk-primary);
+    color: var(--bk-white);
+    padding: 12px 22px;
+    border-radius: var(--bk-radius-full);
+    font-size: var(--bk-text-sm);
+    font-weight: 600;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    z-index: 99999;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.bk-toast-in {
+    animation: bk-toast-in 0.3s ease forwards;
+}
+
+.bk-toast-out {
+    animation: bk-toast-out 0.4s ease forwards;
+}
+
+@keyframes bk-toast-in {
+    from { opacity: 0; transform: translateX(-50%) translateY(12px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes bk-toast-out {
+    from { opacity: 1; transform: translateX(-50%) translateY(0); }
+    to   { opacity: 0; transform: translateX(-50%) translateY(12px); }
+}
+
 /* ── RESPONSIVE ──────────────────────────────────────────────────── */
 @media (max-width: 600px) {
     .bk-hero    { padding: var(--bk-space-10) var(--bk-space-5) 36px; }

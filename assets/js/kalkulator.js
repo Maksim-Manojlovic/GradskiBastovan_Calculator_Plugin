@@ -309,6 +309,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!ps) return;
     if (ps.tip_cene !== "po_dogovoru" && stanje.kolicina <= 0) return;
 
+    var label = stanje.primarna_naziv + " › " + ps.naziv;
+
     stanje.usluge_lista.push({
       primarna_slug: stanje.primarna_slug,
       primarna_naziv: stanje.primarna_naziv,
@@ -319,7 +321,23 @@ document.addEventListener("DOMContentLoaded", function () {
     resetSelection();
     renderCart();
     updateNext1();
+    showToast("&#10003; Dodato: " + escHtml(label));
   });
+
+  function showToast(msg) {
+    var toast = document.getElementById("bk-toast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "bk-toast";
+      document.body.appendChild(toast);
+    }
+    toast.innerHTML = msg;
+    toast.className = "bk-toast bk-toast-in";
+    clearTimeout(toast._timer);
+    toast._timer = setTimeout(function () {
+      toast.className = "bk-toast bk-toast-out";
+    }, 2200);
+  }
 
   function resetSelection() {
     document
