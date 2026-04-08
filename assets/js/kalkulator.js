@@ -323,12 +323,10 @@ document.addEventListener("DOMContentLoaded", function () {
     updateNext1();
     showToast("&#10003; Dodato: " + escHtml(label));
 
-    var cartEl = document.getElementById("bk-cart");
-    if (cartEl) {
-      setTimeout(function () {
-        cartEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      }, 80);
-    }
+    setTimeout(function () {
+      var step1 = document.getElementById("bk-step-1");
+      if (step1) step1.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 80);
   });
 
   function showToast(msg) {
