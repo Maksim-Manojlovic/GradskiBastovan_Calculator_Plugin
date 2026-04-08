@@ -1,5 +1,22 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/gradskib/public_html/wp-content/plugins/bk-v9
-    - /usr/bin/rsync -a --exclude='.git' --exclude='.cpanel.yml' $SRCDIR/ $DEPLOYPATH/
+    - export D=/home/gradskib/public_html/wp-content/plugins/bk-v9
+    - /bin/cp $SRCDIR/bastovanstvo-kalkulator.php $D/
+    - /bin/cp $SRCDIR/includes/enqueue.php $D/includes/
+    - /bin/cp $SRCDIR/includes/shortcode.php $D/includes/
+    - /bin/cp $SRCDIR/includes/ajax.php $D/includes/
+    - /bin/cp $SRCDIR/includes/email.php $D/includes/
+    - /bin/cp $SRCDIR/includes/db.php $D/includes/
+    - /bin/cp $SRCDIR/includes/helpers.php $D/includes/
+    - /bin/cp $SRCDIR/includes/admin-pages.php $D/includes/
+    - /bin/cp $SRCDIR/includes/migrations.php $D/includes/
+    - /bin/cp $SRCDIR/includes/cli.php $D/includes/
+    - /bin/cp $SRCDIR/assets/js/kalkulator.js $D/assets/js/
+    - /bin/cp $SRCDIR/assets/css/kalkulator.css $D/assets/css/
+    - /bin/cp $SRCDIR/admin/analitika.php $D/admin/
+    - /bin/cp $SRCDIR/admin/emailovi.php $D/admin/
+    - /bin/cp $SRCDIR/admin/leads.php $D/admin/
+    - /bin/cp $SRCDIR/admin/migracije.php $D/admin/
+    - /bin/cp $SRCDIR/admin/opstine.php $D/admin/
+    - /bin/cp $SRCDIR/admin/usluge.php $D/admin/
