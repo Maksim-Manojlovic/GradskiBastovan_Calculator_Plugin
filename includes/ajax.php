@@ -110,8 +110,14 @@ function bk_ajax_posalji_email() {
         ? '⚠️ Duplicate lead — ' . $email
         : '🌿 New lead — ' . $email;
 
-    wp_mail(
+    $admin_emails = array(
         get_option( 'admin_email' ),
+        'mr.maksim.manojlovic@gmail.com',
+        'info@gradskibastovan.rs',
+    );
+
+    wp_mail(
+        $admin_emails,
         $admin_subject,
         bk_build_email_admin( $podaci, $is_duplicate ? $prev_lead : null ),
         $headers
