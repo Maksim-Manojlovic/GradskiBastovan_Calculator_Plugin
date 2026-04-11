@@ -107,6 +107,14 @@ document.addEventListener("DOMContentLoaded", function () {
         prikaziPodusluge(this.value);
         sakriKolicinu();
         updateDodajWrap();
+        setTimeout(function () {
+          var el = document.getElementById("bk-podusluge-wrap");
+          if (el)
+            window.scrollTo({
+              top: el.getBoundingClientRect().top + window.pageYOffset - 150,
+              behavior: "smooth",
+            });
+        }, 80);
       });
     });
 
@@ -163,6 +171,18 @@ document.addEventListener("DOMContentLoaded", function () {
         prikaziKolicinu(ps);
         updateDodajWrap();
         updateLiveCena();
+        setTimeout(function () {
+          var target =
+            ps.tip_cene === "po_dogovoru"
+              ? document.getElementById("bk-dodaj-wrap")
+              : document.getElementById("bk-kolicina-wrap");
+          if (target)
+            window.scrollTo({
+              top:
+                target.getBoundingClientRect().top + window.pageYOffset - 150,
+              behavior: "smooth",
+            });
+        }, 80);
       });
 
       lista.appendChild(card);
