@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }, 80);
       });
-      //proba
+
       lista.appendChild(card);
     });
 
