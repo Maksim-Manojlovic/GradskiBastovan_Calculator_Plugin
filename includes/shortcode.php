@@ -135,6 +135,8 @@ function bk_shortcode_render() {
                 <!-- KORAK 2 -->
                 <div class="bk-step" id="bk-step-2" style="display:none">
 
+                    <div class="bk-step2-summary" id="bk-step2-summary" style="display:none"></div>
+
                     <div class="bk-section">
                         <div class="bk-section-title"><span class="bk-icon">&#128205;</span> Op&#353;tina</div>
                         <p class="bk-section-desc">

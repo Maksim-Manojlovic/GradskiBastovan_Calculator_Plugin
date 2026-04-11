@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       currentStep = next;
       updateProgress(next);
+      if (next === 2) buildStep2Summary();
       if (next === 3) buildReview();
       wrapper.scrollIntoView({ behavior: "smooth", block: "start" });
     }
@@ -519,6 +520,29 @@ document.addEventListener("DOMContentLoaded", function () {
         : chipLabel.textContent.split("\n")[0].trim();
     });
   });
+
+  // ── Step 2 summary bar ────────────────────────────────────
+
+  function buildStep2Summary() {
+    var bar = document.getElementById("bk-step2-summary");
+    if (!bar) return;
+    if (!stanje.usluge_lista.length) { bar.style.display = "none"; return; }
+
+    var chips = stanje.usluge_lista.map(function (item) {
+      var usluga = BK_USLUGE.find(function (u) { return u.slug === item.primarna_slug; });
+      var emoji = usluga ? usluga.emoji : "";
+      var tekst = escHtml(item.primarna_naziv + " \u203a " + item.podusluga.naziv);
+      return '<span class="bk-s2-chip">' +
+        (emoji ? '<span class="bk-s2-chip-emoji">' + emoji + "</span>" : "") +
+        "<span>" + tekst + "</span>" +
+        "</span>";
+    }).join("");
+
+    bar.innerHTML =
+      '<div class="bk-s2-label">&#128722; Odabrano:</div>' +
+      '<div class="bk-s2-chips">' + chips + "</div>";
+    bar.style.display = "flex";
+  }
 
   // ── Review card (korak 3) ─────────────────────────────────
 
