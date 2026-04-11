@@ -103,6 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
           c.classList.remove("selected");
         });
         this.closest(".bk-primary-card").classList.add("selected");
+        document.getElementById("bk-primarne").classList.add("bk-has-selection");
 
         prikaziPodusluge(this.value);
         sakriKolicinu();
@@ -189,6 +190,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     wrap.style.display = "block";
+    wrap.classList.remove("bk-expand-in");
+    void wrap.offsetWidth;
+    wrap.classList.add("bk-expand-in");
   }
 
   function formatCenaBadge(ps) {
@@ -264,6 +268,9 @@ document.addEventListener("DOMContentLoaded", function () {
     stanje.kolicina = parseFloat(inp.value);
 
     wrap.style.display = "block";
+    wrap.classList.remove("bk-expand-in");
+    void wrap.offsetWidth;
+    wrap.classList.add("bk-expand-in");
     document.getElementById("bk-live-cena").style.display = "block";
   }
 
@@ -377,6 +384,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".bk-primary-card").forEach(function (c) {
       c.classList.remove("selected");
     });
+    document.getElementById("bk-primarne").classList.remove("bk-has-selection");
     document.getElementById("bk-podusluge-wrap").style.display = "none";
     document.getElementById("bk-kolicina-wrap").style.display = "none";
     document.getElementById("bk-live-cena").style.display = "none";

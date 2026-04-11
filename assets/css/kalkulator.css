@@ -409,6 +409,22 @@
 .bk-primary-card input:checked + .bk-service-label,
 .bk-primary-card.selected .bk-service-label { border-color: var(--bk-primary); background: var(--bk-primary-light); box-shadow: 0 0 0 3px var(--bk-primary-subtle); }
 
+/* Dim non-selected cards when a selection is active */
+.bk-services.bk-has-selection .bk-primary-card:not(.selected):not(.bk-card-added) .bk-service-label {
+    opacity: 0.4;
+    transform: scale(0.97);
+    filter: grayscale(20%);
+}
+
+/* Slide-in for podusluge and kolicina panels */
+@keyframes bk-expand-in {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.bk-expand-in {
+    animation: bk-expand-in 0.25s ease forwards;
+}
+
 .bk-card-added .bk-service-label {
     border-color: var(--bk-success-border);
     background: var(--bk-success-bg);
