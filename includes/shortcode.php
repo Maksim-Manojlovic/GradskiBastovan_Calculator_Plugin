@@ -61,6 +61,12 @@ function bk_shortcode_render() {
 
                 <!-- KORAK 1 -->
                 <div class="bk-step" id="bk-step-1">
+
+                        <div id="bk-cart" style="display:none; margin-bottom:16px">
+                            <div class="bk-cart-header">&#128722; Odabrane usluge</div>
+                            <div class="bk-cart-items"></div>
+                        </div>
+
                     <div class="bk-section">
                         <div class="bk-section-title"><span class="bk-icon">&#127807;</span> Odaberite uslugu</div>
                         <p class="bk-section-desc">Dodajte jednu ili više usluga, pa pređite na detalje</p>
@@ -105,18 +111,13 @@ function bk_shortcode_render() {
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                         <div id="bk-dodaj-wrap" style="display:none; margin-top:16px">
                             <button class="bk-btn-dodaj" id="bk-btn-dodaj" disabled>
                                 &#43; Dodaj uslugu u listu
                             </button>
                         </div>
-
-                        <div id="bk-cart" style="display:none; margin-top:20px">
-                            <div class="bk-cart-header">&#128722; Odabrane usluge</div>
-                            <div class="bk-cart-items"></div>
-                        </div>
+                    </div>
 
                     <div class="bk-step-nav">
                         <div></div>
