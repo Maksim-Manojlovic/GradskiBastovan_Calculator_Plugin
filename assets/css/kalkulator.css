@@ -409,6 +409,19 @@
 .bk-primary-card input:checked + .bk-service-label,
 .bk-primary-card.selected .bk-service-label { border-color: var(--bk-primary); background: var(--bk-primary-light); box-shadow: 0 0 0 3px var(--bk-primary-subtle); }
 
+.bk-card-added .bk-service-label {
+    border-color: var(--bk-success-border);
+    background: var(--bk-success-bg);
+}
+.bk-card-added .bk-service-check {
+    display: flex;
+    background: var(--bk-success);
+    font-size: 9px;
+}
+.bk-card-added .bk-service-name {
+    color: var(--bk-success);
+}
+
 /* ── RESULTS ──────────────────────────────────────────────────────── */
 .bk-result {
     display: none;

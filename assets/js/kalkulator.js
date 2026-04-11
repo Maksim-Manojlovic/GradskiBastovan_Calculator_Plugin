@@ -340,6 +340,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     resetSelection();
     renderCart();
+    updatePrimaryCardStates();
     updateNext1();
     showToast("&#10003; Dodato: " + escHtml(label));
 
@@ -429,8 +430,22 @@ document.addEventListener("DOMContentLoaded", function () {
           1,
         );
         renderCart();
+        updatePrimaryCardStates();
         updateNext1();
       });
+    });
+  }
+
+  // ── Primary card "already added" state ───────────────────
+
+  function updatePrimaryCardStates() {
+    var addedSlugs = stanje.usluge_lista.map(function (item) {
+      return item.primarna_slug;
+    });
+    document.querySelectorAll(".bk-primary-card").forEach(function (card) {
+      var inp = card.querySelector('input[name="primarna_usluga"]');
+      if (!inp) return;
+      card.classList.toggle("bk-card-added", addedSlugs.indexOf(inp.value) !== -1);
     });
   }
 
@@ -877,6 +892,7 @@ document.addEventListener("DOMContentLoaded", function () {
     stanje.hitnost_naziv = "Standardno (3-5 dana)";
 
     renderCart();
+    updatePrimaryCardStates();
 
     document.getElementById("opstina").value = "";
     document.querySelector('input[name="ucestalost"][value="0"]').checked =
