@@ -8,32 +8,23 @@
  * Text Domain: bastovanstvo-kalkulator
  */
 
-function bk_enqueue_assets() {
-
-    if ( is_admin() ) return;
-
-    if ( ! is_singular() ) return;
-
+function bk_enqueue_styles() {
     global $post;
-
-    if ( ! $post || ! has_shortcode( $post->post_content, 'bastovanstvo_kalkulator' ) ) {
+    if ( ! is_a( $post, 'WP_Post' ) || ! has_shortcode( $post->post_content, 'bastovanstvo_kalkulator' ) ) {
         return;
     }
 
-    wp_enqueue_style(
-        'bk-kalkulator-style',
-        BK_URL . 'assets/css/kalkulator.css',
-        [],
-        BK_VERSION
-    );
-
-    wp_enqueue_script(
-        'bk-kalkulator-js',
-        BK_URL . 'assets/js/kalkulator.js',
-        [],
-        BK_VERSION,
-        true
-    );
+    // Inline the CSS — no HTTP request, no render-blocking
+    // Falls back to a regular <link> if file_get_contents fails on the server
+    add_action( 'wp_head', function() {
+        $css_file = BK_DIR . 'assets/css/kalkulator.css';
+        $css      = file_exists( $css_file ) ? @file_get_contents( $css_file ) : false;
+        if ( $css ) {
+            echo '<style id="bk-kalkulator-style">' . $css . '</style>' . "\n";
+        } else {
+            echo '<link rel="stylesheet" id="bk-kalkulator-style" href="' . esc_url( BK_URL . 'assets/css/kalkulator.css?ver=' . BK_VERSION ) . '" media="all">' . "\n";
+        }
+    }, 10 );
 }
 
-add_action('wp_enqueue_scripts', 'bk_enqueue_assets');
+add_action( 'wp_enqueue_scripts', 'bk_enqueue_styles' );
