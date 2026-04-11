@@ -460,7 +460,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // ── Validacija + Next ─────────────────────────────────────
 
   function updateNext1() {
-    next1.disabled = stanje.usluge_lista.length === 0;
+    var empty = stanje.usluge_lista.length === 0;
+    next1.disabled = empty;
+    var hint = document.getElementById("bk-empty-hint");
+    if (hint) hint.classList.toggle("bk-empty-hint-hidden", !empty);
   }
 
   // ── Navigacija ────────────────────────────────────────────

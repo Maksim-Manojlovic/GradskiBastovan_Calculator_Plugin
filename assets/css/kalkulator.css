@@ -645,6 +645,20 @@
     color: var(--bk-white);
 }
 
+/* ── EMPTY STATE HINT ────────────────────────────────────────────── */
+.bk-empty-hint {
+    text-align: center;
+    font-size: var(--bk-text-sm);
+    color: var(--bk-text-muted);
+    padding: var(--bk-space-2) 0;
+    transition: opacity 0.3s ease;
+}
+
+.bk-empty-hint-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
 /* ── TOAST ───────────────────────────────────────────────────────── */
 .bk-toast {
     position: fixed;

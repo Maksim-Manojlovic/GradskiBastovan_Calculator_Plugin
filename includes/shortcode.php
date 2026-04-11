@@ -119,6 +119,10 @@ function bk_shortcode_render() {
                         </div>
                     </div>
 
+                    <div id="bk-empty-hint" class="bk-empty-hint">
+                        &#128070; Odaberite barem jednu uslugu da biste nastavili
+                    </div>
+
                     <div class="bk-step-nav">
                         <div></div>
                         <button class="bk-btn bk-btn-primary" id="bk-next-1" disabled>
