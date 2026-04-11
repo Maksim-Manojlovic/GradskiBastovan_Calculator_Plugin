@@ -324,8 +324,11 @@ document.addEventListener("DOMContentLoaded", function () {
     showToast("&#10003; Dodato: " + escHtml(label));
 
     setTimeout(function () {
-      var step1 = document.getElementById("bk-step-1");
-      if (step1) step1.scrollIntoView({ behavior: "smooth", block: "start" });
+      var cartEl = document.getElementById("bk-cart");
+      if (cartEl) {
+        var top = cartEl.getBoundingClientRect().top + window.pageYOffset - 120;
+        window.scrollTo({ top: top, behavior: "smooth" });
+      }
     }, 80);
   });
 
