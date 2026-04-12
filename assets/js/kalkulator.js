@@ -172,7 +172,6 @@ document.addEventListener("DOMContentLoaded", function () {
         stanje.kolicina = 50;
         prikaziKolicinu(ps);
         updateDodajWrap();
-        updateLiveCena();
         setTimeout(function () {
           var target =
             ps.tip_cene === "po_dogovoru"
@@ -283,40 +282,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .addEventListener("input", function () {
       stanje.kolicina = parseFloat(this.value) || 0;
       updateDodajWrap();
-      updateLiveCena();
     });
-
-  // ── Live cena preview ─────────────────────────────────────
-
-  function updateLiveCena() {
-    if (!stanje.podusluga) return;
-    var ps = stanje.podusluga;
-    var kol = stanje.kolicina;
-    var el = document.getElementById("bk-live-cena-value");
-    var tipEl = document.getElementById("bk-live-cena-tip");
-
-    if (ps.tip_cene === "po_dogovoru") return;
-
-    if (ps.tip_cene === "raspon_m2" || ps.tip_cene === "raspon_kom") {
-      var rawMin = ps.cena_min * kol;
-      var rawMax = ps.cena_max * kol;
-      var dMin = Math.max(rawMin, BK_MIN_CENA);
-      var dMax = Math.max(rawMax, BK_MIN_CENA);
-      el.textContent = fmtRsd(dMin) + " – " + fmtRsd(dMax) + " RSD";
-      tipEl.textContent =
-        rawMin < BK_MIN_CENA || rawMax < BK_MIN_CENA
-          ? "Primenjena minimalna cena: " + fmtRsd(BK_MIN_CENA) + " RSD"
-          : "Okvirna cena bez putnog doplatka";
-    } else {
-      var raw = ps.cena_min * kol;
-      var disp = Math.max(raw, BK_MIN_CENA);
-      el.textContent = "≈ " + fmtRsd(disp) + " RSD";
-      tipEl.textContent =
-        raw < BK_MIN_CENA
-          ? "Primenjena minimalna cena: " + fmtRsd(BK_MIN_CENA) + " RSD"
-          : "Okvirna cena bez putnog doplatka";
-    }
-  }
 
   // ── Dodaj uslugu (korpa) ──────────────────────────────────
 
@@ -394,16 +360,33 @@ document.addEventListener("DOMContentLoaded", function () {
     stanje.kolicina = 50;
   }
 
+  var _lastBadgeCount = 0;
+
+  function updateCartBadge() {
+    var badge = document.getElementById("bk-cart-badge");
+    if (!badge) return;
+    var count = stanje.usluge_lista.length;
+    badge.textContent = count;
+    if (count !== _lastBadgeCount) {
+      badge.classList.remove("bk-badge-pop");
+      void badge.offsetWidth;
+      badge.classList.add("bk-badge-pop");
+      _lastBadgeCount = count;
+    }
+  }
+
   function renderCart() {
     var cartEl = document.getElementById("bk-cart");
     if (!cartEl) return;
 
     if (stanje.usluge_lista.length === 0) {
       cartEl.style.display = "none";
+      updateCartBadge();
       return;
     }
 
     cartEl.style.display = "block";
+    updateCartBadge();
     var itemsEl = cartEl.querySelector(".bk-cart-items");
     itemsEl.innerHTML = stanje.usluge_lista
       .map(function (item, i) {

@@ -640,6 +640,33 @@
     gap: var(--bk-space-2);
 }
 
+.bk-cart-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    border-radius: 999px;
+    background: var(--bk-primary);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 1;
+}
+
+.bk-badge-pop {
+    animation: bk-badge-pop .35s cubic-bezier(.36,.07,.19,.97) forwards;
+}
+
+@keyframes bk-badge-pop {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.45); }
+    70%  { transform: scale(.9); }
+    100% { transform: scale(1); }
+}
+
 .bk-cart-item {
     display: flex;
     align-items: center;
