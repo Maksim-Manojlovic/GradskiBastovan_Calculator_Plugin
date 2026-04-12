@@ -63,7 +63,7 @@ function bk_shortcode_render() {
                 <div class="bk-step" id="bk-step-1">
 
                         <div id="bk-cart" style="display:none; margin-bottom:16px">
-                            <div class="bk-cart-header">&#128722; Odabrane usluge</div>
+                            <div class="bk-cart-header">&#128722; Odabrane usluge <span class="bk-cart-badge" id="bk-cart-badge">0</span></div>
                             <div class="bk-cart-items"></div>
                         </div>
 
@@ -103,11 +103,6 @@ function bk_shortcode_render() {
                                 <div class="bk-kolicina-row">
                                     <input type="number" id="bk-kolicina-input" class="bk-input"
                                            min="1" value="50" placeholder="npr. 100">
-                                </div>
-                                <div class="bk-live-cena" id="bk-live-cena" style="display:none">
-                                    <div class="bk-live-cena-label">Okvirna cena</div>
-                                    <div class="bk-live-cena-value" id="bk-live-cena-value">&#8212; RSD</div>
-                                    <div class="bk-live-cena-tip"   id="bk-live-cena-tip"></div>
                                 </div>
                             </div>
                         </div>

@@ -272,7 +272,6 @@ document.addEventListener("DOMContentLoaded", function () {
     wrap.classList.remove("bk-expand-in");
     void wrap.offsetWidth;
     wrap.classList.add("bk-expand-in");
-    document.getElementById("bk-live-cena").style.display = "block";
   }
 
   function sakriKolicinu() {
@@ -388,7 +387,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("bk-primarne").classList.remove("bk-has-selection");
     document.getElementById("bk-podusluge-wrap").style.display = "none";
     document.getElementById("bk-kolicina-wrap").style.display = "none";
-    document.getElementById("bk-live-cena").style.display = "none";
     dodajWrap.style.display = "none";
     stanje.primarna_slug = null;
     stanje.primarna_naziv = null;
