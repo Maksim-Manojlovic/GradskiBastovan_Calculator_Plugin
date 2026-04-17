@@ -72,16 +72,16 @@ function bk_shortcode_render() {
                         <p class="bk-section-desc">Dodajte jednu ili više usluga, pa pređite na detalje</p>
 
                         <div class="bk-services" id="bk-primarne">
-                            <?php foreach ( $usluge as $u ) : ?>
+                            <?php $card_i = 0; foreach ( $usluge as $u ) : $card_i++; ?>
                             <label class="bk-service-card bk-primary-card">
                                 <input type="radio"
                                        name="primarna_usluga"
                                        value="<?php echo esc_attr( $u['slug'] ); ?>"
                                        data-naziv="<?php echo esc_attr( $u['naziv'] ); ?>">
                                 <div class="bk-service-label">
-                                    <span class="bk-service-emoji"><?php echo esc_html( $u['emoji'] ); ?></span>
                                     <div class="bk-service-name"><?php echo esc_html( $u['naziv'] ); ?></div>
                                 </div>
+                                <span class="bk-card-num" aria-hidden="true"><?php echo sprintf( '%02d', $card_i ); ?></span>
                                 <div class="bk-service-check">&#10003;</div>
                             </label>
                             <?php endforeach; ?>
