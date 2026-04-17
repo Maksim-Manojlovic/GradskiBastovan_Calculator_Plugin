@@ -121,7 +121,7 @@ function bk_shortcode_render() {
                     <div class="bk-step-nav">
                         <div></div>
                         <button class="bk-btn bk-btn-primary" id="bk-next-1" disabled>
-                            Dalje: Detalji <span class="bk-btn-arrow">&#8594;</span>
+                             Detalji <span class="bk-btn-arrow">&#8594;</span>
                         </button>
                     </div>
                     <div class="bk-error" id="bk-error-1"></div>
@@ -204,7 +204,7 @@ function bk_shortcode_render() {
                             <span class="bk-btn-arrow">&#8592;</span> Nazad
                         </button>
                         <button class="bk-btn bk-btn-primary" id="bk-next-2">
-                            Dalje: Kontakt <span class="bk-btn-arrow">&#8594;</span>
+                             Kontakt <span class="bk-btn-arrow">&#8594;</span>
                         </button>
                     </div>
                     <div class="bk-error" id="bk-error-2"></div>

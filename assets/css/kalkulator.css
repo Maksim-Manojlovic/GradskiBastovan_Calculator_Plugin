@@ -527,14 +527,14 @@
   padding: 13px var(--bk-space-6);
   border-radius: var(--bk-radius-full);
   font-family: var(--bk-font-body); font-size: var(--bk-text-base); font-weight: 600;
-  cursor: pointer; border: none; transition: var(--bk-transition);
+  cursor: pointer; border: 1.5px solid transparent; transition: var(--bk-transition);
   text-decoration: none; display: inline-flex; align-items: center; gap: var(--bk-space-2);
 }
 
-.bk-btn-primary { background: white; color: var(--bk-primary); }
-.bk-btn-primary:hover { background: var(--bk-secondary); transform: translateY(-1px); }
-.bk-btn-secondary { background: white; color: var(--bk-primary); }
-.bk-btn-secondary:hover { border-color: black; background: var(--bk-secondary); }
+.bk-btn-primary { background: var(--bk-primary); color: white; border-color: var(--bk-primary); }
+.bk-btn-primary:hover { background: var(--bk-primary-hover); border-color: var(--bk-primary-hover); transform: translateY(-1px); box-shadow: var(--bk-shadow-btn); }
+.bk-btn-secondary { background: transparent; color: var(--bk-primary); border-color: var(--bk-primary); }
+.bk-btn-secondary:hover { background: var(--bk-primary-subtle); transform: translateY(-1px); }
 .bk-btn-arrow { display: inline-block; font-style: normal; }
 
 .bk-note { background: var(--bk-secondary-light); border-left: 3px solid var(--bk-secondary); padding: 10px 14px; border-radius: 0 var(--bk-radius-sm) var(--bk-radius-sm) 0; font-size: 12px; color: var(--bk-primary); margin-top: var(--bk-space-3); }
