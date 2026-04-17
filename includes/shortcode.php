@@ -213,23 +213,20 @@ function bk_shortcode_render() {
                 <!-- KORAK 3 -->
                 <div class="bk-step" id="bk-step-3" style="display:none">
 
-                    <div class="bk-review-card" id="bk-review">
-                        <div class="bk-review-title">&#128203; Pregled va&#353;eg izbora</div>
-                        <div class="bk-review-grid" id="bk-review-grid"></div>
-                    </div>
-
-                    <div class="bk-email-section">
-                        <div class="bk-email-info">
-                            <span class="bk-email-icon">&#128231;</span>
-                            <div>
-                                <strong>Unesite email adresu</strong> da biste primili detaljnu procenu.
-                                Besplatno i bez obaveza.
-                            </div>
+                    <div class="bk-panel" id="bk-review">
+                        <div class="bk-panel-block">
+                            <div class="bk-panel-label">Pregled va&#353;eg izbora</div>
+                            <div class="bk-review-grid" id="bk-review-grid"></div>
                         </div>
-                        <div class="bk-email-wrap">
-                            <input type="email" id="bk-email" class="bk-email-input"
-                                   placeholder="vasa@email.com" autocomplete="email">
-                            <span class="bk-email-check" id="bk-email-check">&#10003;</span>
+                        <div class="bk-panel-sep"></div>
+                        <div class="bk-panel-block">
+                            <div class="bk-panel-label">Email adresa</div>
+                            <p class="bk-email-desc">Primit&#263;ete detaljnu procenu. Besplatno i bez obaveza.</p>
+                            <div class="bk-email-wrap">
+                                <input type="email" id="bk-email" class="bk-email-input"
+                                       placeholder="vasa@email.com" autocomplete="email">
+                                <span class="bk-email-check" id="bk-email-check">&#10003;</span>
+                            </div>
                         </div>
                     </div>
 
@@ -238,7 +235,7 @@ function bk_shortcode_render() {
                             <span class="bk-btn-arrow">&#8592;</span> Nazad
                         </button>
                         <button class="bk-btn bk-btn-primary" id="bk-btn-izracunaj" disabled>
-                            Izra&#269;unaj i po&#353;alji procenu &#128232;
+                            Izra&#269;unaj i po&#353;alji procenu
                         </button>
                     </div>
 

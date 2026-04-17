@@ -523,6 +523,28 @@
 
 .bk-cta { display: flex; gap: var(--bk-space-3); flex-wrap: wrap; }
 
+/* Buttons inside the dark result card need inverted colours */
+.bk-result .bk-btn-primary {
+    background: white;
+    color: var(--bk-primary);
+    border-color: white;
+}
+.bk-result .bk-btn-primary:hover {
+    background: var(--bk-secondary);
+    border-color: var(--bk-secondary);
+    color: var(--bk-primary);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+.bk-result .bk-btn-secondary {
+    background: transparent;
+    color: white;
+    border-color: rgba(255,255,255,0.45);
+}
+.bk-result .bk-btn-secondary:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: white;
+}
+
 .bk-btn {
   padding: 13px var(--bk-space-6);
   border-radius: var(--bk-radius-full);
@@ -621,10 +643,6 @@
 .bk-result-tags { display: flex; flex-wrap: wrap; gap: var(--bk-space-2); margin-bottom: var(--bk-space-6); }
 .bk-tag { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--bk-radius-full); padding: 5px 12px; font-size: 12px; opacity: 0.85; }
 
-.bk-email-section { background: var(--bk-cream); border: 1px solid var(--bk-primary-border); border-radius: var(--bk-radius-xl); padding: var(--bk-space-5) var(--bk-space-6); margin-bottom: var(--bk-space-4); }
-.bk-email-info { display: flex; align-items: flex-start; gap: var(--bk-space-3); margin-bottom: var(--bk-space-4); font-size: var(--bk-text-base); color: #555; line-height: 1.5; }
-.bk-email-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
-.bk-email-info strong { color: var(--bk-primary); }
 .bk-email-wrap { position: relative; }
 
 .bk-email-input { width: 100%; box-sizing: border-box; padding: 13px 48px 13px var(--bk-space-4); font-size: var(--bk-text-md); border: 2px solid var(--bk-border); border-radius: var(--bk-radius-md); outline: none; background: var(--bk-white); transition: border-color 0.2s, box-shadow 0.2s; color: var(--bk-text); }
@@ -691,12 +709,11 @@
 
 .bk-step-nav { display: flex; justify-content: space-between; align-items: center; margin-top: var(--bk-space-5); gap: var(--bk-space-3); }
 
-.bk-review-card { background: var(--bk-cream); border: 1.5px solid var(--bk-primary-border); border-radius: var(--bk-radius-lg); padding: var(--bk-space-5) var(--bk-space-6); margin-bottom: var(--bk-space-6); }
-.bk-review-title { font-size: var(--bk-text-base); font-weight: 700; color: var(--bk-primary); margin-bottom: 14px; letter-spacing: 0.3px; }
-.bk-review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px var(--bk-space-6); }
-.bk-review-item { display: flex; flex-direction: column; gap: 2px; }
-.bk-review-label { font-size: var(--bk-text-xs); font-weight: 700; color: var(--bk-primary); text-transform: uppercase; letter-spacing: 0.5px; }
-.bk-review-value { font-size: var(--bk-text-base); color: var(--bk-text); font-weight: 500; }
+.bk-review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px var(--bk-space-6); }
+.bk-review-item { display: flex; flex-direction: column; gap: 3px; }
+.bk-review-label { font-size: 10px; font-weight: 700; color: var(--bk-text-muted); text-transform: uppercase; letter-spacing: .1em; }
+.bk-review-value { font-size: var(--bk-text-md); color: var(--bk-text); font-weight: 500; line-height: 1.3; }
+.bk-email-desc { font-size: var(--bk-text-sm); color: var(--bk-text-muted); margin: 0 0 14px; }
 
 .bk-review-row { display: flex; flex-direction: column; gap: 2px; }
 .bk-review-bold { font-weight: 800; color: var(--bk-primary); font-size: var(--bk-text-md); }
