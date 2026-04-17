@@ -173,10 +173,10 @@ function bk_admin_css() {
     .bk-cb { background: #fff; border: 1px solid #e0e0e0; border-radius: 10px; padding: 16px 20px; box-shadow: 0 1px 3px rgba(0,0,0,.05) }
     .bk-cb h3 { margin: 0 0 12px; font-size: 13px; color: #444; font-weight: 700 }
     .bk-cb canvas { max-height: 210px }
-    .bk-tb { background: #fff; border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.05); margin-bottom: 16px }
+    .bk-tb { background: #fff; border: 1px solid #e0e0e0; border-radius: 10px; overflow-x: auto; overflow-y: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.05); margin-bottom: 16px }
     .bk-tb h3 { margin: 0; padding: 12px 16px; font-size: 13px; font-weight: 700; border-bottom: 1px solid #f0f0f0 }
-    .bk-tb table { width: 100%; border-collapse: collapse }
-    .bk-tb th { background: #f8f8f8; padding: 8px 13px; text-align: left; font-size: 11px; color: #888; font-weight: 700; text-transform: uppercase; letter-spacing: .4px }
+    .bk-tb table { width: 100%; border-collapse: collapse; min-width: 900px }
+    .bk-tb th { background: #f8f8f8; padding: 8px 13px; text-align: left; font-size: 11px; color: #888; font-weight: 700; text-transform: uppercase; letter-spacing: .4px; white-space: nowrap }
     .bk-tb td { padding: 8px 13px; font-size: 12px; color: #333; border-top: 1px solid #f5f5f5 }
     .bk-tb tr:hover td { background: #fafff8 }
     .bk-badge { display: inline-block; padding: 2px 7px; border-radius: 20px; font-size: 11px; font-weight: 700 }
@@ -224,6 +224,12 @@ add_action( 'admin_head', function () {
     .bk-leads-count { display:inline-flex; align-items:center; justify-content:center; background:#2d6a2d; color:#fff; font-size:11px; font-weight:700; border-radius:20px; padding:1px 8px; min-width:22px }
     .bk-leads-section .bk-tb { border:none; border-radius:0; box-shadow:none; margin-bottom:0 }
     .bk-leads-section .bk-pagination { padding:10px 16px }
+
+    /* ── Sticky actions column ── */
+    .bk-tb table th:last-child,
+    .bk-tb table td:last-child { position:sticky; right:0; background:#fff; z-index:1; box-shadow:-2px 0 6px rgba(0,0,0,.06) }
+    .bk-tb table th:last-child { background:#f8f8f8 }
+    .bk-tb table tr:hover td:last-child { background:#fafff8 }
 
     /* ── Archived section overrides ── */
     #bk-sec-archived .bk-collapse-body { padding:14px 0 0 }
