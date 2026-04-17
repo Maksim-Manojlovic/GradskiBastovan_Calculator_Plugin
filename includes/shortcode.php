@@ -132,12 +132,10 @@ function bk_shortcode_render() {
 
                     <div class="bk-step2-summary" id="bk-step2-summary" style="display:none"></div>
 
-                    <div class="bk-section">
-                        <div class="bk-section-title"><span class="bk-icon">&#128205;</span> Op&#353;tina</div>
-                        <p class="bk-section-desc">
-                            Izaberite op&#353;tinu &mdash; putni tro&#353;ak se dodaje na cenu usluge
-                        </p>
-                        <div class="bk-field">
+                    <div class="bk-panel">
+
+                        <div class="bk-panel-block">
+                            <div class="bk-panel-label">Op&#353;tina</div>
                             <div class="bk-select-wrap">
                                 <select class="bk-select" id="opstina">
                                     <option value="">&#8212; Izaberite op&#353;tinu &#8212;</option>
@@ -157,14 +155,11 @@ function bk_shortcode_render() {
                                 </select>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="bk-section">
-                        <div class="bk-section-title"><span class="bk-icon">&#9881;&#65039;</span> Dodatne opcije</div>
-                        <p class="bk-section-desc">Ove opcije mogu uticati na finalnu cenu</p>
+                        <div class="bk-panel-sep"></div>
 
-                        <div class="bk-field">
-                            <label class="bk-label">U&#269;estalost usluge</label>
+                        <div class="bk-panel-block">
+                            <div class="bk-panel-label">U&#269;estalost usluge</div>
                             <div class="bk-chips">
                                 <label class="bk-chip">
                                     <input type="radio" name="ucestalost" value="0" checked>
@@ -172,23 +167,23 @@ function bk_shortcode_render() {
                                 </label>
                                 <label class="bk-chip">
                                     <input type="radio" name="ucestalost" value="-15">
-                                    <span class="bk-chip-label">Mese&#269;ni ugovor <span class="bk-chip-badge">-15%</span></span>
+                                    <span class="bk-chip-label">Mese&#269;ni ugovor <span class="bk-chip-badge">&#8722;15%</span></span>
                                 </label>
                                 <label class="bk-chip">
                                     <input type="radio" name="ucestalost" value="-25">
-                                    <span class="bk-chip-label">Sezonski ugovor <span class="bk-chip-badge">-25%</span></span>
+                                    <span class="bk-chip-label">Sezonski ugovor <span class="bk-chip-badge">&#8722;25%</span></span>
                                 </label>
                             </div>
                         </div>
 
-                        <div class="bk-divider"></div>
+                        <div class="bk-panel-sep"></div>
 
-                        <div class="bk-field" style="margin-bottom:0">
-                            <label class="bk-label">Hitnost</label>
+                        <div class="bk-panel-block" style="padding-bottom:0">
+                            <div class="bk-panel-label">Hitnost</div>
                             <div class="bk-chips">
                                 <label class="bk-chip">
                                     <input type="radio" name="hitnost" value="0" checked>
-                                    <span class="bk-chip-label">Standardno (3-5 dana)</span>
+                                    <span class="bk-chip-label">Standardno (3&#8211;5 dana)</span>
                                 </label>
                                 <label class="bk-chip">
                                     <input type="radio" name="hitnost" value="20">
@@ -199,11 +194,9 @@ function bk_shortcode_render() {
                                     <span class="bk-chip-label">Isti dan <span class="bk-chip-badge">+40%</span></span>
                                 </label>
                             </div>
+                            <div class="bk-note" style="margin-top:18px">Kombinovanjem sezonskog ugovora i standardnog termina mo&#382;ete u&#353;tedeti i do 25%.</div>
                         </div>
 
-                        <div class="bk-note">
-                            Kombinovanjem sezonskog ugovora i standardnog termina mo&#382;ete u&#353;tedeti i do 25%.
-                        </div>
                     </div>
 
                     <div class="bk-step-nav">

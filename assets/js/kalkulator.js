@@ -520,7 +520,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }).join("");
 
     bar.innerHTML =
-      '<div class="bk-s2-label">&#128722; Odabrano:</div>' +
+      '<div class="bk-s2-label">Odabrano</div>' +
       '<div class="bk-s2-chips">' + chips + "</div>";
     bar.style.display = "flex";
   }
