@@ -15,7 +15,7 @@ function bk_page_emailovi() {
             'uvod_k'       => sanitize_textarea_field( $_POST['em_uvod']  ?? '' ),
             'napomena_k'   => sanitize_textarea_field( $_POST['em_nap']   ?? '' ),
             'cta_tekst'    => sanitize_text_field( $_POST['em_ctat'] ?? '' ),
-            'cta_url'      => esc_url_raw( $_POST['em_ctau']         ?? '' ),
+            'cta_url'      => esc_url_raw( $_POST['em_ctau'] ?? '', [ 'http', 'https', 'tel', 'mailto' ] ),
             'footer_tekst' => sanitize_text_field( $_POST['em_foot'] ?? '' ),
         ) );
         echo '<div class="notice notice-success is-dismissible"><p>✅ Email podešavanja sačuvana!</p></div>';
