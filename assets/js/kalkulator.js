@@ -30,6 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // ── Element refs ──────────────────────────────────────────
   var emailInput = document.getElementById("bk-email");
   var emailCheck = document.getElementById("bk-email-check");
+  var telefonInput = document.getElementById("bk-telefon");
+  var telefonCheck = document.getElementById("bk-telefon-check");
   var btnIzracunaj = document.getElementById("bk-btn-izracunaj");
   var next1 = document.getElementById("bk-next-1");
   var btnDodaj = document.getElementById("bk-btn-dodaj");
@@ -666,18 +668,31 @@ document.addEventListener("DOMContentLoaded", function () {
     return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val.trim());
   }
 
-  function updateEmailState() {
-    var valid = isValidEmail(emailInput.value);
-    var dirty = emailInput.value.length > 0;
-    emailInput.classList.toggle("valid", valid);
-    emailInput.classList.toggle("invalid", dirty && !valid);
-    emailCheck.classList.toggle("visible", valid);
-    btnIzracunaj.disabled = !valid;
+  function isValidPhone(val) {
+    return /^[+]?[\d\s\-().]{7,20}$/.test(val.trim());
   }
 
-  emailInput.addEventListener("input", updateEmailState);
-  emailInput.addEventListener("blur", updateEmailState);
-  updateEmailState();
+  function updateFormState() {
+    var emailValid = isValidEmail(emailInput.value);
+    var emailDirty = emailInput.value.length > 0;
+    emailInput.classList.toggle("valid", emailValid);
+    emailInput.classList.toggle("invalid", emailDirty && !emailValid);
+    emailCheck.classList.toggle("visible", emailValid);
+
+    var phoneValid = isValidPhone(telefonInput.value);
+    var phoneDirty = telefonInput.value.length > 0;
+    telefonInput.classList.toggle("valid", phoneValid);
+    telefonInput.classList.toggle("invalid", phoneDirty && !phoneValid);
+    telefonCheck.classList.toggle("visible", phoneValid);
+
+    btnIzracunaj.disabled = !(emailValid && phoneValid);
+  }
+
+  emailInput.addEventListener("input", updateFormState);
+  emailInput.addEventListener("blur", updateFormState);
+  telefonInput.addEventListener("input", updateFormState);
+  telefonInput.addEventListener("blur", updateFormState);
+  updateFormState();
 
   function setError(id, msg) {
     var el = document.getElementById(id);
@@ -703,7 +718,8 @@ document.addEventListener("DOMContentLoaded", function () {
     statusEl.textContent = "";
 
     var email = emailInput.value.trim();
-    if (!isValidEmail(email)) return;
+    var telefon = telefonInput.value.trim();
+    if (!isValidEmail(email) || !isValidPhone(telefon)) return;
 
     var fin = izracunajFinalnu();
     if (!fin) return;
@@ -836,6 +852,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     posaljiEmail({
       email: email,
+      telefon: telefon,
       usluge: uslugeNazivi,
       cena: fin.cena_str,
       povrsina: stanje.kolicina || 0,
@@ -857,6 +874,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fd.append("action", "bk_posalji_email");
     fd.append("nonce", bkAjax.nonce);
     fd.append("email", data.email);
+    fd.append("telefon", data.telefon || "");
     fd.append("usluge", data.usluge);
     fd.append("cena", data.cena);
     fd.append("povrsina", data.povrsina);

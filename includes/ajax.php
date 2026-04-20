@@ -46,6 +46,7 @@ function bk_ajax_posalji_email() {
 
     // ── 2. Sanitize inputs ────────────────────────────────────────────────────
     $email    = sanitize_email( $_POST['email']    ?? '' );
+    $telefon  = sanitize_text_field( $_POST['telefon']  ?? '' );
     $usluge   = sanitize_text_field( $_POST['usluge']   ?? '' );
     $cena_str = sanitize_text_field( $_POST['cena']     ?? '' );
     $povrsina = intval( $_POST['povrsina'] ?? 0 );
@@ -78,6 +79,7 @@ function bk_ajax_posalji_email() {
         $table,
         array(
             'email'        => $email,
+            'telefon'      => $telefon,
             'usluge'       => $usluge,
             'cena_rsd'     => intval( preg_replace( '/[^0-9]/', '', $cena_str ) ),
             'opstina'      => $opstina,
@@ -87,12 +89,12 @@ function bk_ajax_posalji_email() {
             'status'       => 'new',
             'is_duplicate' => $is_duplicate,
         ),
-        array( '%s', '%s', '%d', '%s', '%d', '%s', '%s', '%s', '%d' )
+        array( '%s', '%s', '%s', '%d', '%s', '%d', '%s', '%s', '%s', '%d' )
     );
     $new_lead_id = $wpdb->insert_id;
 
     // ── 5. Send emails ────────────────────────────────────────────────────────
-    $podaci  = compact( 'email', 'usluge', 'cena_str', 'povrsina', 'opstina', 'ugovor', 'hitnost', 'stavke' );
+    $podaci  = compact( 'email', 'telefon', 'usluge', 'cena_str', 'povrsina', 'opstina', 'ugovor', 'hitnost', 'stavke' );
     $headers = array( 'Content-Type: text/html; charset=UTF-8' );
     $em      = bk_get_email();
     $site    = get_bloginfo( 'name' );

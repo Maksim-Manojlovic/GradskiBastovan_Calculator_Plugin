@@ -161,6 +161,11 @@ function bk_build_email_admin( $podaci, $prev_lead = null ) {
                 <div style="font-size:11px;color:#2d6a2d;font-weight:700;text-transform:uppercase;margin-bottom:2px">User email</div>
                 <div style="font-size:17px;font-weight:700;color:#222">' . esc_html( $podaci['email'] ) . '</div>
             </div>
+            ' . ( ! empty( $podaci['telefon'] ) ? '
+            <div style="background:#f0f7f0;border-radius:8px;padding:13px 17px;margin-bottom:18px">
+                <div style="font-size:11px;color:#2d6a2d;font-weight:700;text-transform:uppercase;margin-bottom:2px">Telefon</div>
+                <div style="font-size:17px;font-weight:700;color:#222"><a href="tel:' . esc_attr( $podaci['telefon'] ) . '" style="color:#222;text-decoration:none">' . esc_html( $podaci['telefon'] ) . '</a></div>
+            </div>' : '' ) . '
             <div style="background:#f9f9f9;border-radius:8px;padding:13px 17px;margin-bottom:18px">
                 <div style="font-size:11px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:2px">Estimated value</div>
                 <div style="font-size:24px;font-weight:800;color:#2d6a2d">≈ ' . esc_html( $podaci['cena_str'] ) . '</div>

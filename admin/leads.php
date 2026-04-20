@@ -132,7 +132,7 @@ function bk_page_leads() {
                 <table>
                     <thead>
                         <tr>
-                            <th>#</th><th>Date</th><th>Email</th><th>Services</th>
+                            <th>#</th><th>Date</th><th>Email</th><th>Phone</th><th>Services</th>
                             <th>Area</th><th>Size</th><th>Value</th><th>Urgency</th>
                             <?php if ( $archived ) : ?><th>Archived</th><?php endif; ?>
                             <th>Dup.</th><th>Status</th><th>Note</th><th></th>
@@ -150,6 +150,13 @@ function bk_page_leads() {
                             <a href="mailto:<?php echo esc_attr( $lead->email ); ?>" style="color:#2271b1;text-decoration:none">
                                 <?php echo esc_html( $lead->email ); ?>
                             </a>
+                        </td>
+                        <td style="white-space:nowrap;font-size:12px">
+                            <?php if ( ! empty( $lead->telefon ) ) : ?>
+                            <a href="tel:<?php echo esc_attr( $lead->telefon ); ?>" style="color:#2271b1;text-decoration:none">
+                                <?php echo esc_html( $lead->telefon ); ?>
+                            </a>
+                            <?php else : ?>—<?php endif; ?>
                         </td>
                         <td style="font-size:11px;max-width:150px;color:#555"><?php echo esc_html( $lead->usluge ); ?></td>
                         <td style="font-size:12px"><?php echo esc_html( $lead->opstina ); ?></td>

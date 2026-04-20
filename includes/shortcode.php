@@ -228,6 +228,15 @@ function bk_shortcode_render() {
                                 <span class="bk-email-check" id="bk-email-check">&#10003;</span>
                             </div>
                         </div>
+                        <div class="bk-panel-sep"></div>
+                        <div class="bk-panel-block">
+                            <div class="bk-panel-label">Broj telefona</div>
+                            <div class="bk-email-wrap">
+                                <input type="tel" id="bk-telefon" class="bk-email-input"
+                                       placeholder="+381 60 000 0000" autocomplete="tel">
+                                <span class="bk-email-check" id="bk-telefon-check">&#10003;</span>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="bk-step-nav">
