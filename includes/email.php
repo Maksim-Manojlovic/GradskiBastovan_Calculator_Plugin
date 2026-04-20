@@ -100,6 +100,7 @@ function bk_build_email_korisnik( $podaci ) {
                 <a href="' . esc_attr( $em['cta_url'] ) . '" style="display:inline-block;background:' . esc_attr($boja) . ';color:#fff;text-decoration:none;padding:12px 30px;border-radius:8px;font-size:14px;font-weight:700">
                     ' . esc_html( $em['cta_tekst'] ) . '
                 </a>
+                ' . ( strpos( $em['cta_url'], 'tel:' ) === 0 ? '<p style="margin:10px 0 0;font-size:16px;font-weight:700;color:#333">' . esc_html( substr( $em['cta_url'], 4 ) ) . '</p>' : '' ) . '
             </div>
         </td></tr>
 
