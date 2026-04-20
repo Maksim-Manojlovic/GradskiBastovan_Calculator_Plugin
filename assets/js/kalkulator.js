@@ -838,7 +838,7 @@ document.addEventListener("DOMContentLoaded", function () {
       email: email,
       usluge: uslugeNazivi,
       cena: fin.cena_str,
-      povrsina: 0,
+      povrsina: stanje.kolicina || 0,
       opstina: stanje.opstina_naziv || "—",
       ugovor: stanje.ugovor_naziv,
       hitnost: stanje.hitnost_naziv,
