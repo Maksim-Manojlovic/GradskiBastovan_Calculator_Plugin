@@ -65,6 +65,15 @@ function bk_shortcode_render() {
                         <div id="bk-cart" style="display:none; margin-bottom:16px">
                             <div class="bk-cart-header">&#128722; Odabrane usluge <span class="bk-cart-badge" id="bk-cart-badge">0</span></div>
                             <div class="bk-cart-items"></div>
+                            <div class="bk-cart-footer">
+                                <div class="bk-cart-hint">
+                                    <span class="bk-cart-hint-arrow">&#8595;</span>
+                                    <span>Dodajte jo&#353; usluga ispod ili nastavite</span>
+                                </div>
+                                <button class="bk-btn bk-btn-primary bk-btn-sm" id="bk-next-1-cart" disabled>
+                                    Detalji <span class="bk-btn-arrow">&#8594;</span>
+                                </button>
+                            </div>
                         </div>
 
                     <div class="bk-section">

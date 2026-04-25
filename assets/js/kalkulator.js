@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var telefonCheck = document.getElementById("bk-telefon-check");
   var btnIzracunaj = document.getElementById("bk-btn-izracunaj");
   var next1 = document.getElementById("bk-next-1");
+  var next1Cart = document.getElementById("bk-next-1-cart");
   var btnDodaj = document.getElementById("bk-btn-dodaj");
   var dodajWrap = document.getElementById("bk-dodaj-wrap");
 
@@ -446,6 +447,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateNext1() {
     var empty = stanje.usluge_lista.length === 0;
     next1.disabled = empty;
+    if (next1Cart) next1Cart.disabled = empty;
     var hint = document.getElementById("bk-empty-hint");
     if (hint) hint.classList.toggle("bk-empty-hint-hidden", !empty);
   }
@@ -456,6 +458,13 @@ document.addEventListener("DOMContentLoaded", function () {
     if (stanje.usluge_lista.length === 0) return;
     goToStep(2, "forward");
   });
+
+  if (next1Cart) {
+    next1Cart.addEventListener("click", function () {
+      if (stanje.usluge_lista.length === 0) return;
+      goToStep(2, "forward");
+    });
+  }
 
   document.getElementById("bk-back-2").addEventListener("click", function () {
     goToStep(1, "backward");
@@ -644,10 +653,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var finMin = Math.max(sumMin + transport, minTotal);
     var finMax = Math.max(sumMax + transport, minTotal);
+
+    // If spread >= 10 000 RSD, cap max so the range stays manageable
+    var capApplied = false;
+    if (finMax - finMin >= 10000) {
+      finMax = finMin + 10000;
+      capApplied = true;
+    }
+
     var tip = hasDogovor ? "dogovor" : hasRaspon ? "raspon" : "fiksna";
     var cena_str =
       tip === "raspon" || tip === "dogovor"
-        ? fmtRsd(finMin) + " – " + fmtRsd(finMax) + " RSD"
+        ? fmtRsd(finMin) + " – " + fmtRsd(finMax) + (capApplied ? "+" : "") + " RSD"
         : "≈ " + fmtRsd(finMin) + " RSD";
 
     return {
@@ -659,6 +676,7 @@ document.addEventListener("DOMContentLoaded", function () {
       finMax: finMax,
       sumMin: sumMin,
       sumMax: sumMax,
+      capApplied: capApplied,
     };
   }
 
@@ -679,19 +697,24 @@ document.addEventListener("DOMContentLoaded", function () {
     emailInput.classList.toggle("invalid", emailDirty && !emailValid);
     emailCheck.classList.toggle("visible", emailValid);
 
-    var phoneValid = isValidPhone(telefonInput.value);
-    var phoneDirty = telefonInput.value.length > 0;
-    telefonInput.classList.toggle("valid", phoneValid);
-    telefonInput.classList.toggle("invalid", phoneDirty && !phoneValid);
-    telefonCheck.classList.toggle("visible", phoneValid);
+    var phoneValid = true;
+    if (telefonInput) {
+      phoneValid = isValidPhone(telefonInput.value);
+      var phoneDirty = telefonInput.value.length > 0;
+      telefonInput.classList.toggle("valid", phoneValid);
+      telefonInput.classList.toggle("invalid", phoneDirty && !phoneValid);
+      if (telefonCheck) telefonCheck.classList.toggle("visible", phoneValid);
+    }
 
     btnIzracunaj.disabled = !(emailValid && phoneValid);
   }
 
   emailInput.addEventListener("input", updateFormState);
   emailInput.addEventListener("blur", updateFormState);
-  telefonInput.addEventListener("input", updateFormState);
-  telefonInput.addEventListener("blur", updateFormState);
+  if (telefonInput) {
+    telefonInput.addEventListener("input", updateFormState);
+    telefonInput.addEventListener("blur", updateFormState);
+  }
   updateFormState();
 
   function setError(id, msg) {
@@ -718,8 +741,8 @@ document.addEventListener("DOMContentLoaded", function () {
     statusEl.textContent = "";
 
     var email = emailInput.value.trim();
-    var telefon = telefonInput.value.trim();
-    if (!isValidEmail(email) || !isValidPhone(telefon)) return;
+    var telefon = telefonInput ? telefonInput.value.trim() : "";
+    if (!isValidEmail(email) || (telefonInput && !isValidPhone(telefon))) return;
 
     var fin = izracunajFinalnu();
     if (!fin) return;
@@ -807,6 +830,12 @@ document.addEventListener("DOMContentLoaded", function () {
         '<span class="price">' +
         fmtRsd(minTotal) +
         " RSD</span></div>";
+    }
+    if (fin.capApplied) {
+      bdHTML +=
+        '<div class="bk-breakdown-item bk-bd-napomena">' +
+        '<span class="name">ℹ️ Cena može da varira u odnosu na stanje terena</span>' +
+        '<span class="meta"></span><span class="price"></span></div>';
     }
     bd.innerHTML = bdHTML;
 
@@ -955,7 +984,9 @@ document.addEventListener("DOMContentLoaded", function () {
     wrapper.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  document.getElementById("bk-btn-reset").addEventListener("click", reset);
+  document.getElementById("bk-btn-reset").addEventListener("click", function () {
+    goToStep(1, "backward");
+  });
   document
     .getElementById("bk-btn-kontakt")
     .addEventListener("click", function () {
